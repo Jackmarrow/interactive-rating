@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>interactive rating</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <img class="star" src="images/icon-star.svg" alt="star" />
+      <h1>How did we do?</h1>
+      <p>
+        Please lef us know how we did with your support request.All feedback is
+        appreciated to help us improve our offering!
+      </p>
+      <form onSubmit="checkChoice();">
+        <div id="parent" class="rating">
+          <input class="rate" type="button" value="1" />
+          <input class="rate" type="button" value="2" />
+          <input class="rate" type="button" value="3" />
+          <input class="rate" type="button" value="4" />
+          <input class="rate" type="button" value="5" />
+        </div>
+        <input type="submit" value="SUBMIT" />
+      </form>
+    </div>
+    <script>
+      const child = document.querySelectorAll(".rate");
+      const form = document.querySelector("form");
+      const childSize = child.length;
+
+      function checkChoice() {
+        if (sessionStorage.getItem("rate") === null) {
+          alert("Please try to rate our service before submiting");
+        }
+      }
+
+      for (let i = 0; i < childSize; i++) {
+        child[i].onclick = function () {
+          let count = 0;
+          while (count < childSize) {
+            if (child[count].getAttribute("class") !== "rate") {
+              child[count].classList.remove("selection");
+            }
+            count++;
+          }
+          this.classList.add("selection");
+          const value = child[i].value;
+          sessionStorage.setItem("rate", value);
+          form.setAttribute("action", "congrat.html");
+        };
+      }
+    </script>
+  </body>
+</html>

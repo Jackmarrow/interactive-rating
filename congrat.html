@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <img class="phone" src="images/illustration-thank-you.svg" alt="phone" />
+      <p class="rate-result">You selected 4 out 5</p>
+      <h1>Thank you!</h1>
+      <p>
+        We apperciate you taking the time to give a rating. if you ever need
+        more support.don't hesitate to get in touch!
+      </p>
+    </div>
+    <script>
+      const rate = document.querySelector(".rate-result");
+      rate.innerText = `You selected ${sessionStorage.getItem("rate")} out 5`;
+      // if ((window.location.pathname = "/index.html")) {
+      //   localStorage.clear();
+      // }
+    </script>
+  </body>
+</html>
